@@ -12,12 +12,6 @@
         android:theme="@style/Theme.Guide"
         tools:targetApi="31">
         <activity
-            android:name=".ui.listing.ListingRestaurantActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.listing.ListingHotelActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.details.DetailsActivity"
             android:exported="false" />
         <activity
@@ -27,6 +21,7 @@
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.Fullscreen"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

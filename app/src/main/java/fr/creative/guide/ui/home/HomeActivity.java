@@ -9,13 +9,10 @@ import android.widget.LinearLayout;
 
 import fr.creative.guide.R;
 import fr.creative.guide.ui.listing.ListingActivity;
-import fr.creative.guide.ui.listing.ListingHotelActivity;
-import fr.creative.guide.ui.listing.ListingRestaurantActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private LinearLayout restoReservation;
-    private LinearLayout hotelReservation;
+    private LinearLayout restoReservation, hotelReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +25,11 @@ public class HomeActivity extends AppCompatActivity {
         restoReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListingRestaurantActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ListingActivity.class);
+
+                // passage d'un paramètre
+                intent.putExtra("isRestaurant", true);
+
                 startActivity(intent);
             }
         });
@@ -36,7 +37,11 @@ public class HomeActivity extends AppCompatActivity {
         hotelReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListingHotelActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ListingActivity.class);
+
+                // passage d'un paramètre
+                intent.putExtra("isRestaurant", false);
+
                 startActivity(intent);
             }
         });
