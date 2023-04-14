@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/liste_bouton_off">
+    android:background="@drawable/liste_bouton">
 
     <TextView
         android:id="@+id/name"
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         tools:text="MC DO"/>
 
     <TextView

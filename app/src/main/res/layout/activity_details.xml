@@ -33,30 +33,30 @@
         android:textSize="19sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginHorizontal="20dp"
+        style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bouton_email_off"
-        tools:text="info@mcdo.fr"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="12dp"
-        style="@style/detailsButton" />
+        android:background="@drawable/bouton_email"
+        tools:text="info@mcdo.fr" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginHorizontal="20dp"
+        style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bouton_tel_off"
-        android:layout_marginTop="8dp"
-        tools:text="0102030405"
-        style="@style/detailsButton" />
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bouton_tel"
+        tools:text="0102030405" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginHorizontal="20dp"
+        style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bouton_site_off"
-        android:layout_marginTop="8dp"
-        tools:text="http://mcdo.fr"
-        style="@style/detailsButton" />
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bouton_site"
+        tools:text="http://mcdo.fr" />
 
 </LinearLayout>
