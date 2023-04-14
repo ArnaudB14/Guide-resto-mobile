@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:paddingTop="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:text="@string/listing_restaurant_title"
+        android:gravity="top|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac convallis erat, non faucibus nibh. Fusce a consectetur neque. Donec semper mauris aliquam tempor gravida. Proin posuere fringilla libero, nec pretium augue dignissim eu. Suspendisse neque est, vestibulum et pulvinar ut, posuere id felis. Aenean id imperdiet nulla, semper auctor neque. Proin ac sodales enim. Aliquam auctor nibh id erat pharetra rhoncus. Maecenas nec ipsum non risus feugiat sollicitudin quis sed lorem."
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="20dp"/>
+
+    <ListView
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:id="@+id/listViewRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+</LinearLayout>

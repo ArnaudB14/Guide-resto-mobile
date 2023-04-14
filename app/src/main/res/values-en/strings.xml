@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Guide</string>
+    <string name="main_resa_hotel">Book \na hotel</string>
+    <string name="main_resa_resto">Reserve \na restaurant</string>
+    <string name="main_subtitle">Find the best hotels and restaurants</string>
+    <string name="main_title">Hotel restaurant</string>
+    <string name="listing_restaurant_title">The Restaurants</string>
+    <string name="listing_hotel_title">Hotels</string>
+</resources>
