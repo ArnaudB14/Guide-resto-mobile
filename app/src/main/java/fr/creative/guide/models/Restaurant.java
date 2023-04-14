@@ -1,6 +1,8 @@
 package fr.creative.guide.models;
 
-public class Restaurant {
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
     private String name;
     private String category;
     private String email;

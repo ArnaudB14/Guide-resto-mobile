@@ -6,4 +6,6 @@
     <string name="main_title">Hotel restaurant</string>
     <string name="listing_restaurant_title">The Restaurants</string>
     <string name="listing_hotel_title">Hotels</string>
+    <string name="listing_search">Search for a restaurant</string>
+    <string name="listing_sort_by_category">Sort by category :</string>
 </resources>

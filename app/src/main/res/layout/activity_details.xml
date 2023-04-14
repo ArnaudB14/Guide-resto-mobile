@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/detailImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/photo_restaurant" />
 
@@ -19,20 +19,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="McDO"
+        tools:text="McDO"
         android:textSize="22sp"
         android:textStyle="bold" />
 
 
     <TextView
+        android:id="@+id/detailCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:text="Fast Food"
+        tools:text="Fast Food"
         android:textSize="19sp" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/detailMail"
         style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
         tools:text="info@mcdo.fr" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/detailPhone"
         style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +54,7 @@
         tools:text="0102030405" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/detailSite"
         style="@style/detailsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
