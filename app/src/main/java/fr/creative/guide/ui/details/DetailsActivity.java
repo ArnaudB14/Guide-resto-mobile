@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import fr.creative.guide.R;
+
 public class DetailsActivity extends AppCompatActivity {
 
     private TextView detailNameTextView;

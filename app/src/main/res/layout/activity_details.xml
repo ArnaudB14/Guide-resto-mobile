@@ -17,53 +17,46 @@
         android:id="@+id/detailTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:text="McDO"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:layout_marginTop="15dp"/>
+        android:text="McDO"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
-        android:text="Fast Food"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"/>
+        android:text="Fast Food"
+        android:textSize="19sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="info@mcdo.fr"
-        android:layout_marginHorizontal="20dp"
-        android:textAllCaps="false"
-        android:drawableLeft="@drawable/bouton_email_on"
-        android:paddingLeft="0dp"
-        android:backgroundTint="@color/bleu_clair"/>
+        android:background="@drawable/bouton_email_off"
+        tools:text="info@mcdo.fr"
+        android:layout_marginTop="12dp"
+        style="@style/detailsButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="0102030405"
-        android:layout_marginHorizontal="20dp"
-        android:textAllCaps="false"
-        android:drawableLeft="@drawable/bouton_tel_on"
-        android:paddingLeft="0dp"
-        android:backgroundTint="@color/bleu_clair"/>
+        android:background="@drawable/bouton_tel_off"
+        android:layout_marginTop="8dp"
+        tools:text="0102030405"
+        style="@style/detailsButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="http://www.mcdo.fr"
-        android:layout_marginHorizontal="20dp"
-        android:textAllCaps="false"
-        android:drawableLeft="@drawable/bouton_site_on"
-        android:paddingLeft="0dp"
-        android:backgroundTint="@color/bleu_clair"/>
-
+        android:background="@drawable/bouton_site_off"
+        android:layout_marginTop="8dp"
+        tools:text="http://mcdo.fr"
+        style="@style/detailsButton" />
 
 </LinearLayout>

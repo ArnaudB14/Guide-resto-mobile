@@ -19,6 +19,7 @@ public class ListingActivity extends AppCompatActivity {
 
     private TextView listingTitle;
     private ListView listViewName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,16 @@ public class ListingActivity extends AppCompatActivity {
             }
         });
 
-        if(getIntent().getExtras() != null) {
+        boolean isRestaurant = getIntent().getBooleanExtra("isRestaurant", false);
+        if (isRestaurant) {
+            listingTitle.setText(R.string.listing_restaurant_title);
+        } else {
+            listingTitle.setText(R.string.listing_hotel_title);
+        }
+
+        // OU
+
+        /*if(getIntent().getExtras() != null) {
             boolean isRestaurant = getIntent().getExtras().getBoolean("isRestaurant");
 
             if(isRestaurant) {
@@ -56,7 +66,7 @@ public class ListingActivity extends AppCompatActivity {
             } else {
                 listingTitle.setText(R.string.listing_hotel_title);
             }
-        }
+        } */
     }
 
     @Override

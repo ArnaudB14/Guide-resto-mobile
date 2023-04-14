@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Timer myTimer;
     private static final long DURATION = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

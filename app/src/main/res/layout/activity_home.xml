@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,30 +29,30 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="match_parent"
+            android:id="@+id/hotelresto"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="3"
-            android:orientation="vertical"
             android:background="@color/vert"
-            android:paddingTop="35dp"
-            android:id="@+id/hotelresto">
+            android:orientation="vertical"
+            android:paddingTop="35dp">
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="15dp"
                 android:text="@string/main_title"
-                android:textStyle="bold"
+                android:textColor="@color/blanc"
                 android:textSize="18sp"
-                android:paddingHorizontal="15dp"
-                android:textColor="@color/blanc" />
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/main_subtitle"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
                 android:paddingHorizontal="15dp"
-                android:textColor="@color/blanc" />
+                android:text="@string/main_subtitle"
+                android:textColor="@color/blanc"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/accueil2"
-                    android:layout_gravity="bottom"/>
+                    android:layout_gravity="bottom"
+                    app:srcCompat="@drawable/accueil2" />
 
             </LinearLayout>
 
@@ -76,10 +76,10 @@
         android:id="@+id/restoReservation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/bleu"
         android:layout_marginTop="1dp"
-        android:gravity="center_vertical">
+        android:background="@color/bleu"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -98,14 +98,14 @@
         </LinearLayout>
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="@string/main_resa_resto"
-            android:textStyle="bold"
             android:textAllCaps="true"
+            android:textColor="@color/blanc"
             android:textSize="25sp"
-            android:textColor="@color/blanc" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -113,10 +113,10 @@
         android:id="@+id/hotelReservation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/rose"
         android:layout_marginTop="1dp"
-        android:gravity="center_vertical">
+        android:background="@color/rose"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -135,14 +135,14 @@
         </LinearLayout>
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="@string/main_resa_hotel"
             android:textAllCaps="true"
-            android:textStyle="bold"
+            android:textColor="@color/blanc"
             android:textSize="25sp"
-            android:textColor="@color/blanc" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

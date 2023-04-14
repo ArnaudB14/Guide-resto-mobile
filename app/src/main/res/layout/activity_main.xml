@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:gravity="center"
     android:background="@drawable/splashscreen"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -15,9 +15,9 @@
         app:srcCompat="@drawable/splashscreen_logo" />
 
     <TextView
+        style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Title"
-        android:text="Hôtel &amp; Restaurant"/>
+        android:text="Hôtel &amp; Restaurant" />
 
 </LinearLayout>

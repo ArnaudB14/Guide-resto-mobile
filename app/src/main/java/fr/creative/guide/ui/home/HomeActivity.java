@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(HomeActivity.this, ListingActivity.class);
 
                 // passage d'un paramètre
-                intent.putExtra("isRestaurant", false);
+                //intent.putExtra("isRestaurant", false);
 
                 startActivity(intent);
             }
