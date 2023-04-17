@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import fr.creative.guide.AppActivity;
 import fr.creative.guide.R;
 import fr.creative.guide.ui.listing.ListingActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppActivity {
 
     private LinearLayout restoReservation, hotelReservation;
 

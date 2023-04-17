@@ -2,6 +2,7 @@ package fr.creative.guide.ui.listing;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,17 +25,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import fr.creative.guide.AppActivity;
 import fr.creative.guide.R;
+import fr.creative.guide.models.Hotel;
 import fr.creative.guide.models.Restaurant;
 import fr.creative.guide.ui.details.DetailsActivity;
 
-public class ListingActivity extends AppCompatActivity {
+public class ListingActivity extends AppActivity {
 
     private TextView listingTitle, countResult;
     private ListView listViewName;
     private EditText searchEditText;
     private List<Restaurant> restaurantList;
     private Spinner categorySpinner;
+    private RecyclerView recyclerViewData;
 
     private RestaurantAdapter restaurantAdapter;
 
@@ -42,32 +47,12 @@ public class ListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
 
-        ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
         listingTitle = findViewById(R.id.listingTitle);
         listViewName = findViewById(R.id.listViewName);
         searchEditText = findViewById(R.id.searchEditText);
         countResult = findViewById(R.id.countResult);
         categorySpinner = findViewById(R.id.categorySpinner);
-
-        /*String[] listItem = {"Item 1", "Item 2", "Item 3"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListingActivity.this, R.layout.list_item, R.id.name, listItem);
-        listViewName.setAdapter(adapter);
-
-        listViewName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String detailName = (String) parent.getItemAtPosition(position);
-                Intent intent = new Intent(ListingActivity.this, DetailsActivity.class);
-                intent.putExtra("DETAIL_NAME", detailName);
-                startActivity(intent);
-            }
-        });*/
+        recyclerViewData = findViewById(R.id.recyclerViewData);
 
         boolean isRestaurant = getIntent().getBooleanExtra("isRestaurant", false);
         if (isRestaurant) {
@@ -89,24 +74,45 @@ public class ListingActivity extends AppCompatActivity {
                     R.layout.list_item,
                     restaurantList);
 
-            listViewName.setAdapter(restaurantAdapter);
+            listViewName.setVisibility(View.VISIBLE);
+            recyclerViewData.setVisibility(View.GONE);
 
+            listViewName.setAdapter(restaurantAdapter);
             listViewName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Restaurant item = restaurantList.get(position);
 
                     Intent intent = new Intent(ListingActivity.this, DetailsActivity.class);
-
-                    // il faut ajouter implements Serializable dans Restaurant.java
                     intent.putExtra("restaurant", item);
 
                     startActivity(intent);
                 }
             });
-
         } else {
             listingTitle.setText(R.string.listing_hotel_title);
+
+            List<Hotel> hotelList = new ArrayList<>();
+            hotelList.add(new Hotel("Ibis", "**", "info@ibis.com", "0102030405", "http://www.ibis.com", "https://www.tourmag.com/photo/art/default/7705113-11920893.jpg?v=1429626170"));
+            hotelList.add(new Hotel("Mercure", "***", "info@mercure.com", "0102030405", "http://www.mercurehotel.com", "https://hoteloperagarnier.com/wp-content/uploads/2021/09/logo-mercure.png"));
+
+            listViewName.setVisibility(View.GONE);
+            recyclerViewData.setVisibility(View.VISIBLE);
+
+            recyclerViewData.setAdapter(new AdapterHotel(
+                    R.layout.list_item,
+                    hotelList,
+                    new OnAdapterItemClick() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            // ACTION DE REDIRECTION VERS DETAILS
+                            Hotel item = hotelList.get(position);
+                            Intent intent = new Intent(ListingActivity.this, DetailsActivity.class);
+                            intent.putExtra("hotel", item);
+                            startActivity(intent);
+                        }
+                    }
+            ));
         }
 
         // OU
@@ -121,80 +127,71 @@ public class ListingActivity extends AppCompatActivity {
             }
         } */
 
-        searchEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        if (restaurantList != null) {
+            // CHERCHER UN RESTAURANT
+            searchEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+                }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ((RestaurantAdapter) listViewName.getAdapter()).updateList(s.toString());
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    ((RestaurantAdapter) listViewName.getAdapter()).updateList(s.toString());
 
-            }
+                }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                int count = restaurantAdapter.getCount();
-                countResult.setText(count + " restaurant(s) trouvé(s)");
-            }
-        });
-
-
-        // Trier les restaurants par catégories
-        Set<String> uniqueCategories = new HashSet<>();
-
-        for (Restaurant restaurant : restaurantList) {
-            uniqueCategories.add(restaurant.getCategory());
-        }
-
-        List<String> categories = new ArrayList<>(uniqueCategories);
-        categories.add("Voir tout");
-        Collections.reverse(categories);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(adapter);
-
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCategory = (String) parent.getItemAtPosition(position);
-                if (selectedCategory.equals("Voir tout")) {
-                    restaurantAdapter.setData(restaurantList);
-                    int count = restaurantAdapter.getCount();
-                    countResult.setText(count + " restaurant(s) trouvé(s)");
-                } else {
-                    // Afficher les restaurants de la catégorie sélectionnée
-                    List<Restaurant> filteredList = new ArrayList<>();
-                    for (Restaurant restaurant : restaurantList) {
-                        if (restaurant.getCategory().equals(selectedCategory)) {
-                            filteredList.add(restaurant);
-                        }
-                    }
-                    restaurantAdapter.setData(filteredList);
+                @Override
+                public void afterTextChanged(Editable s) {
                     int count = restaurantAdapter.getCount();
                     countResult.setText(count + " restaurant(s) trouvé(s)");
                 }
+            });
+
+
+            // Trier les restaurants par catégories
+            Set<String> uniqueCategories = new HashSet<>();
+
+            for (Restaurant restaurant : restaurantList) {
+                uniqueCategories.add(restaurant.getCategory());
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                restaurantAdapter.setData(restaurantList);
-            }
-        });
+            List<String> categories = new ArrayList<>(uniqueCategories);
+            categories.add("Voir tout");
+            Collections.reverse(categories);
 
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            categorySpinner.setAdapter(adapter);
 
-    }
+            categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String selectedCategory = (String) parent.getItemAtPosition(position);
+                    if (selectedCategory.equals("Voir tout")) {
+                        restaurantAdapter.setData(restaurantList);
+                        int count = restaurantAdapter.getCount();
+                        countResult.setText(count + " restaurant(s) trouvé(s)");
+                    } else {
+                        // Afficher les restaurants de la catégorie sélectionnée
+                        List<Restaurant> filteredList = new ArrayList<>();
+                        for (Restaurant restaurant : restaurantList) {
+                            if (restaurant.getCategory().equals(selectedCategory)) {
+                                filteredList.add(restaurant);
+                            }
+                        }
+                        restaurantAdapter.setData(filteredList);
+                        int count = restaurantAdapter.getCount();
+                        countResult.setText(count + " restaurant(s) trouvé(s)");
+                    }
+                }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    restaurantAdapter.setData(restaurantList);
+                }
+            });
         }
+
     }
 }

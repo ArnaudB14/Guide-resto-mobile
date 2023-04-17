@@ -1,6 +1,8 @@
 package fr.creative.guide.models;
 
-public class Hotel {
+import java.io.Serializable;
+
+public class Hotel implements Serializable {
     private String name;
     private String category;
     private String email;

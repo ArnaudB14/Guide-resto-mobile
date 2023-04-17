@@ -13,7 +13,7 @@ import java.util.TimerTask;
 
 import fr.creative.guide.ui.home.HomeActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppActivity {
 
     private Timer myTimer;
     private static final long DURATION = 2000;
